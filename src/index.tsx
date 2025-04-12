@@ -1,15 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
+import { mainnet, polygon } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
+import "@rainbow-me/rainbowkit/styles.css";
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+// Simple configuration to get app rendering
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon],
+  [publicProvider()]
 );
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  publicClient,
+});
+
+// Create root element for rendering
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+
+// Render the app with direct providers to bypass type errors
 root.render(
   <React.StrictMode>
-    <App />
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </RainbowKitProvider>
+    </WagmiConfig>
   </React.StrictMode>
 );
 

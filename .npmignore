@@ -1,0 +1,42 @@
+# Source files
+src/
+*.ts
+*.tsx
+
+# Development files
+.git/
+.gitignore
+.vscode/
+.idea/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test files
+__tests__/
+*.test.ts
+*.spec.ts
+coverage/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build files
+dist/
+build/
+!build/cli/
+!build/cli/index.js
+
+# Misc
+.DS_Store
+Thumbs.db 

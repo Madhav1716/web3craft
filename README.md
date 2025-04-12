@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Web3Craft
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A powerful CLI tool to create Web3 applications with React, TypeScript, and popular Web3 libraries.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🚀 Quick project setup
+- ⚛️ React + TypeScript
+- 🔗 Multiple blockchain support
+- 🎨 Modern UI with Tailwind CSS
+- 🔌 Pre-configured Web3 connections
+- 🛠️ Built-in components for common Web3 features
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install -g create-web3craft-app
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Or use npx:
 
-### `npm test`
+```bash
+npx create-web3craft-app my-web3-app
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+1. Create a new project:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npx create-web3craft-app my-web3-app
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Follow the prompts to:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - Select features
+   - Choose primary blockchain
+   - Add additional blockchains
 
-### `npm run eject`
+3. Navigate to your project:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+cd my-web3-app
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5. Start the development server:
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Available Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Dark Mode
+- Token Balance Display
+- Transaction History
+- NFT Gallery
+- Token Swap
+- Staking
+- Governance
+
+## Supported Blockchains
+
+- Ethereum Mainnet
+- Polygon
+- Optimism
+- Arbitrum
+- Base
+- zkSync Era
+- Linea
+
+## Project Structure
+
+```
+my-web3-app/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── config/        # Blockchain configurations
+│   ├── pages/         # Application pages
+│   └── styles/        # CSS and styling
+├── public/            # Static assets
+└── package.json       # Project dependencies
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
+
+## Support
+
+If you find this tool helpful, please consider giving it a ⭐️ on GitHub!

@@ -1,0 +1,65 @@
+📁 project-name/
+  ├── 📁 public/
+  │   ├── 📄 favicon.ico
+  │   ├── 📄 index.html
+  │   ├── 📄 logo192.png
+  │   ├── 📄 logo512.png
+  │   ├── 📄 manifest.json
+  │   └── 📄 robots.txt
+  ├── 📁 src/
+  │   ├── 📁 components/
+  │   │   ├── 📁 ui/
+  │   │   │   ├── 📄 BlockUILogo.tsx
+  │   │   │   ├── 📄 magnetic-card.tsx
+  │   │   │   ├── 📄 sparkles.tsx
+  │   │   │   └── 📄 wavy-background.tsx
+  │   │   ├── 📄 NFTViewer.tsx (optional)
+  │   │   ├── 📄 NetworkSelector.tsx
+  │   │   ├── 📄 ThemeToggle.tsx
+  │   │   ├── 📄 TokenBalance.tsx (optional)
+  │   │   ├── 📄 TokenTransfer.tsx (optional)
+  │   │   ├── 📄 TransactionForm.tsx
+  │   │   ├── 📄 WalletButton.tsx
+  │   │   ├── 📄 WalletConnect.tsx
+  │   │   └── 📄 WalletConnectButton.tsx
+  │   ├── 📁 config/
+  │   │   └── 📄 chains.ts
+  │   ├── 📁 contexts/
+  │   │   ├── 📄 ThemeContext.tsx
+  │   │   └── 📄 Web3Provider.tsx
+  │   ├── 📁 contracts/
+  │   │   └── 📄 abis.ts
+  │   ├── 📁 hooks/
+  │   │   ├── 📄 useAccountBalance.ts
+  │   │   └── 📄 useNetworkStatus.ts
+  │   ├── 📁 lib/
+  │   │   └── 📄 utils.ts
+  │   ├── 📁 pages/
+  │   │   └── 📄 Home.tsx
+  │   ├── 📁 providers/
+  │   │   └── 📄 Web3Provider.tsx
+  │   ├── 📁 services/
+  │   │   └── 📄 web3.ts
+  │   ├── 📁 types/
+  │   │   └── 📄 web3.ts
+  │   ├── 📁 utils/
+  │   │   └── 📄 format.ts
+  │   ├── 📄 App.css
+  │   ├── 📄 App.test.tsx
+  │   ├── 📄 App.tsx
+  │   ├── 📄 index.css
+  │   ├── 📄 index.ts
+  │   ├── 📄 index.tsx
+  │   ├── 📄 logo.svg
+  │   ├── 📄 react-app-env.d.ts
+  │   ├── 📄 reportWebVitals.ts
+  │   └── 📄 setupTests.ts
+  ├── 📄 .env
+  ├── 📄 .gitignore
+  ├── 📄 config-overrides.js
+  ├── 📄 package-lock.json
+  ├── 📄 package.json
+  ├── 📄 postcss.config.js
+  ├── 📄 README.md
+  ├── 📄 tailwind.config.js
+  └── 📄 tsconfig.json 
