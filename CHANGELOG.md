@@ -1,14 +1,16 @@
 # Changelog
 
-All notable changes to Web3Craft will be documented in this file.
+All notable changes to this project will be documented in this file.
 
-## [0.1.0] - 2024-02-20
+## [1.0.0] - 2025-04-12
 
 ### Added
 
-- Initial release
-- Basic CLI functionality
-- Support for multiple blockchains
+- Initial release of Web3Craft CLI
+- Support for creating React Web3 applications
+- Feature selection during project creation
+- Blockchain network configuration
+- Basic project templates
 - Core Web3 features:
   - Dark Mode
   - Token Balance Display
@@ -27,3 +29,15 @@ All notable changes to Web3Craft will be documented in this file.
 - Base
 - zkSync Era
 - Linea
+
+### Changed
+
+- Updated project branding and author information
+- Improved CLI user experience
+- Enhanced CLI interface
+- Automatic npm install after project creation
+- Custom startup branding
+
+### Authors
+
+- Madhav Panchal

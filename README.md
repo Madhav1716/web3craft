@@ -172,4 +172,4 @@ If you find this tool helpful, please consider giving it a ⭐️ on GitHub!
 
 ## Contact
 
-For questions or suggestions, please open an issue on GitHub or contact us at [your-email@example.com](mailto:your-email@example.com)
+For questions or suggestions, please open an issue on GitHub.

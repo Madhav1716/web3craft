@@ -46,10 +46,24 @@ const CHAIN_NAMES: Record<Blockchain, string> = {
   linea: "Linea",
 };
 
-async function main() {
-  console.log(chalk.blue.bold("Web3Craft - Craft Your Web3 Masterpiece"));
-  console.log(chalk.gray("Building beautiful Web3 applications with ease"));
+function showBanner() {
+  console.log(
+    chalk.blue(`
+  ██╗    ██╗███████╗██████╗ ██████╗  ██████╗██████╗  █████╗ ███████╗████████╗
+  ██║    ██║██╔════╝██╔══██╗╚════██╗██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
+  ██║ █╗ ██║█████╗  ██████╔╝ █████╔╝██║     ██████╔╝███████║█████╗     ██║   
+  ██║███╗██║██╔══╝  ██╔══██╗ ╚═══██╗██║     ██╔══██╗██╔══██║██╔══╝     ██║   
+  ╚███╔███╔╝███████╗██████╔╝██████╔╝╚██████╗██║  ██║██║  ██║██║        ██║   
+   ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   
+  `)
+  );
+  console.log(chalk.cyan("  Craft Your Web3 Masterpiece"));
+  console.log(chalk.gray("  Version 1.0.0 | Created by Madhav Panchal"));
   console.log();
+}
+
+async function main() {
+  showBanner();
 
   // Get app name from command line arguments
   const appName = process.argv[2];
@@ -133,6 +147,12 @@ async function main() {
     // Copy template files
     copyDir(TEMPLATE_DIR, targetDir);
 
+    // Make fix-dependencies.js executable
+    const fixScriptPath = path.join(targetDir, "fix-dependencies.js");
+    if (fs.existsSync(fixScriptPath)) {
+      fs.chmodSync(fixScriptPath, "755");
+    }
+
     // Update package.json with app name
     const packageJsonPath = path.join(targetDir, "package.json");
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
@@ -144,10 +164,31 @@ async function main() {
 
     spinner.succeed(chalk.green("Project created successfully!"));
 
-    console.log("\nNext steps:");
+    // Install dependencies
+    const installSpinner = ora("Installing dependencies...").start();
+    try {
+      execSync("npm install --legacy-peer-deps", {
+        cwd: targetDir,
+        stdio: "pipe",
+      });
+      installSpinner.succeed(
+        chalk.green("Dependencies installed successfully!")
+      );
+    } catch (error) {
+      installSpinner.fail(
+        chalk.yellow("Could not automatically install dependencies")
+      );
+      console.log(chalk.yellow("If you encounter dependency conflicts, run:"));
+      console.log(chalk.cyan(`  cd ${appName}`));
+      console.log(chalk.cyan("  node fix-dependencies.js"));
+      console.log("");
+    }
+
+    console.log(chalk.green("\nNext steps:"));
     console.log(chalk.cyan(`  cd ${appName}`));
-    console.log(chalk.cyan("  npm install"));
     console.log(chalk.cyan("  npm start"));
+    console.log("\nIf you encounter any issues starting the app, run:");
+    console.log(chalk.cyan(`  node fix-dependencies.js`));
     console.log("\nHappy coding! 🚀");
   } catch (error) {
     spinner.fail(chalk.red("Failed to create project"));
@@ -189,17 +230,61 @@ function configureFeatures(
   const wagmiConfigPath = path.join(targetDir, "src/config/wagmi.ts");
   let wagmiConfig = fs.readFileSync(wagmiConfigPath, "utf8");
 
-  // Update chains based on selected blockchains
+  // We'll only use the standard chains that are imported by default from wagmi/chains
+  // to avoid compatibility issues
+  const supportedChains = ["mainnet", "polygon", "optimism", "arbitrum"];
+
+  // Filter the chains to only include supported ones
   const allChains = [
     CHAINS[blockchain],
     ...additionalChains.map((chain) => CHAINS[chain]),
-  ];
+  ].filter((chain) => supportedChains.includes(chain));
+
+  // If no selected chains are supported, default to polygon and mainnet
+  if (allChains.length === 0) {
+    allChains.push("mainnet", "polygon");
+  }
+
+  // Replace the chains in the config
   wagmiConfig = wagmiConfig.replace(
     /export const chains = \[.*?\];/,
     `export const chains = [${allChains.join(", ")}];`
   );
 
   fs.writeFileSync(wagmiConfigPath, wagmiConfig);
+
+  // Get the app name from package.json to update in components
+  const packageJsonPath = path.join(targetDir, "package.json");
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+  const appName = packageJson.name;
+  const appDisplayName = appName
+    .replace(/-/g, " ")
+    .split(" ")
+    .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  // Update the Hero component to include the app name
+  const homePath = path.join(targetDir, "src/pages/Home.tsx");
+  if (fs.existsSync(homePath)) {
+    let homeContent = fs.readFileSync(homePath, "utf8");
+    homeContent = homeContent.replace(
+      /<Hero projectName="Your Web3 App" \/>/,
+      `<Hero projectName="${appDisplayName}" />`
+    );
+    homeContent = homeContent.replace(
+      /Web3Craft. All rights reserved/,
+      `${appDisplayName}. All rights reserved`
+    );
+    fs.writeFileSync(homePath, homeContent);
+  }
+
+  // Update the App.tsx to set the app name in the loading state
+  const appPath = path.join(targetDir, "src/App.tsx");
+  if (fs.existsSync(appPath)) {
+    let appContent = fs.readFileSync(appPath, "utf8");
+    appContent = appContent.replace(/Web3Craft/g, appDisplayName);
+    fs.writeFileSync(appPath, appContent);
+  }
 
   // Add feature-specific code
   if (features.includes("tokenBalance")) {

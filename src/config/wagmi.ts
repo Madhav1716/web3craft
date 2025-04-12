@@ -4,8 +4,9 @@ import { getDefaultWallets } from "@rainbow-me/rainbowkit";
 import { publicProvider } from "wagmi/providers/public";
 import { configureChains } from "wagmi";
 
-// Only use chains that are imported by default from wagmi/chains
 export const chains = [polygon, mainnet, optimism, arbitrum];
+
+const projectId = "YOUR_WALLETCONNECT_PROJECT_ID"; // Replace with your WalletConnect Project ID
 
 // Configure chains for the connectors to support
 const { chains: configuredChains, publicClient } = configureChains(chains, [
@@ -15,7 +16,7 @@ const { chains: configuredChains, publicClient } = configureChains(chains, [
 // Set up connectors
 const { connectors } = getDefaultWallets({
   appName: "Web3Craft Application",
-  projectId: "YOUR_WALLETCONNECT_PROJECT_ID", // Replace with your WalletConnect Project ID
+  projectId,
   chains: configuredChains,
 });
 
@@ -25,3 +26,5 @@ export const wagmiClient = createConfig({
   connectors,
   publicClient,
 });
+
+export { projectId };

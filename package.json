@@ -1,11 +1,11 @@
 {
   "name": "create-web3craft-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": false,
   "description": "A CLI tool to create Web3 applications with React, TypeScript, and popular Web3 libraries",
   "main": "build/cli/index.js",
   "bin": {
-    "create-web3craft-app": "build/cli/index.js"
+    "create-web3craft-app": "./build/cli/index.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.cli.json",
@@ -28,7 +28,7 @@
     "cli",
     "boilerplate"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Madhav Panchal",
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
@@ -48,10 +48,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/web3craft.git"
+    "url": "https://github.com/Madhav1716/web3craft.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/web3craft/issues"
+    "url": "https://github.com/Madhav1716/web3craft/issues"
   },
-  "homepage": "https://github.com/yourusername/web3craft#readme"
+  "homepage": "https://github.com/Madhav1716/web3craft#readme"
 }
