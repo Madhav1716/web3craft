@@ -90,7 +90,49 @@ my-web3-app/
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions to Web3Craft! Here's how you can help:
+
+1. Fork the repository
+2. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Make your changes
+4. Commit your changes:
+   ```bash
+   git commit -m "Add your feature"
+   ```
+5. Push to your fork:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. Create a Pull Request
+
+### Development Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Madhav1716/web3craft.git
+   cd web3craft
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Build the project:
+
+   ```bash
+   npm run build
+   ```
+
+4. Test your changes:
+   ```bash
+   npm start
+   ```
 
 ## License
 
@@ -99,3 +141,7 @@ MIT
 ## Support
 
 If you find this tool helpful, please consider giving it a ⭐️ on GitHub!
+
+## Contact
+
+For questions or suggestions, please open an issue on GitHub or contact us at [your-email@example.com](mailto:your-email@example.com)
