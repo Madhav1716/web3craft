@@ -55,6 +55,34 @@ npm install
 npm start
 ```
 
+## Updating
+
+### Updating the CLI Tool
+
+If you installed the CLI tool globally:
+
+```bash
+npm update -g create-web3craft-app
+```
+
+### Updating Generated Projects
+
+For projects created with Web3Craft:
+
+1. Update dependencies in package.json:
+
+```bash
+npm update
+```
+
+2. Update specific Web3 packages:
+
+```bash
+npm update @rainbow-me/rainbowkit wagmi ethers
+```
+
+3. Check the [CHANGELOG.md](CHANGELOG.md) for breaking changes
+
 ## Available Features
 
 - Dark Mode
